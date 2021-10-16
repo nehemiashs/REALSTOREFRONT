@@ -10,34 +10,61 @@
       <a href="#" class="facebook"><i class="fab fa-facebook"></i></a>
       <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
       <a href="#" class="linkedin"><i class="fab fa-linkedin"></i></a>
-      <a href="autentication" class="user"><i class="fas fa-users fa-2x"></i></a>
+      <a href="autentication" class="user"><i class="fas fa-users"></i></a>
     </div>
   </div>
 </section>
 <!-- ENCABEZADO -->
   <hr style="height: 5px; background-color: teal; margin: 0;" >
-  <nav class="navbar navbar-expand-lg navbar-light bg-light" id="nav">
+  <nav class="navbar navbar-expand-lg navbar-light bg-white" id="nav">
     <div class="container-fluid">
       <a class="navbar-brand logo" href="#">
         <img src="assets/logo.png" width="80%" alt="Real Store"/>
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end " style="margin-right: 100px;" id="navbarNavAltMarkup">
-        <div class="nav nav-pills">
-          <a class="nav-link" *ngIf="User" href="autentication"><i class="fa fa-user"></i> Iniciar Sesión</a>
-          <a class="nav-link" href="autentication?#contact"><i class="fas fa-map-marker-alt"></i> Ubicanos</a>
-          <a class="nav-link" href="autentication?#about"><i class="fa fa-building"></i> Nosotros</a>
-          <a class="nav-link"><i class="fa fa-truck"></i> Delivery</a>
-          <a class="nav-link" href="carrito" ><i class="fa fa-cart-plus"></i> Carrito</a>
-          <a class="nav-link"><i class="fa fa-sitemap"></i> Trabaja con Nosotros</a>
-        </div>
+      <a class="navbar-toggler" type="button"  data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon" ></span>
+      </a>
+      <div class="collapse navbar-collapse text-center text-black" id="navbarNavAltMarkup">
+        <ng-template #popTemplate2> <b>Productos</b><br>
+          <div class="row" *ngFor="let element of Producto2; index as i">
+              <a class="nav-link color{{i+1}} text-black"  (click)="detalle(element.codigo)">{{element.nombre}}</a>
+            </div>
+        </ng-template>
+        <ng-template #popTemplate>
+          <div class="row" *ngFor="let element of Categoria; index as i">
+              <a class="nav-link color{{i+1}} text-black"  [popover]="popTemplate2" placement="right" (click)="categoria(element.codigoCategoria)">{{element.nombreCategoria}}&nbsp;&nbsp;&nbsp;&nbsp;
+                <strong class="float float-end"><i class="fas fa-solid fa-chevron-right"></i></strong>
+              </a>
+            </div>
+        </ng-template>
+        <a  class="nav-link"
+                [popover]="popTemplate" >
+          Categorías
+        </a>
+        <a class="col-sm-5 search">
+          <input class="form-control me-4 input" type="search" placeholder="Search" aria-label="Search">
+        </a>
+          <a class="nav-link" href="autentication?#about"> Nosotros</a>
+          <a class="nav-link"> Delivery</a>
+          <a class="nav-link" href="carrito" ><i class="fa fa-shopping-bag fa-2x"></i></a>
+          <a class="nav-link login"  href="autentication"> Iniciar sesión</a>
+          <a class="nav-link registro"   href="autentication"> Regístrate</a>
       </div>
     </div>
   </nav>
 <!-- FIN ENCABEZADO -->
-
+<hr style="margin-top: 0px; margin-bottom: 0px;">
+<!-- INICIO CATEGORIAS -->
+<div class="header-bottom">
+  <div class="wrap" style="margin: auto;">
+    <!-- start header menu -->
+    <ul class="megamenu" >
+      <li class="grid" style="display: inline-block;" *ngFor="let element of Categoria; index as i"><a class="color{{i+1}} text-black"   href="catalogo" (click)="categoria(element.codigoCategoria)">{{element.nombreCategoria}}</a></li>
+    </ul>
+    <div class="clear"></div>
+  </div>
+</div>
+<!-- FIN CATEGORIAS -->
 <!-- INICIO CAROUSEL -->
 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-indicators">
@@ -79,19 +106,6 @@
 </div>
 
 <!-- FIN CAROUSEL -->
-<!-- INICIO CATEGORIAS -->
-<div class="header-bottom">
-  <div class="wrap" style="margin: auto;">
-    <!-- start header menu -->
-    <ul class="megamenu skyblue" ><li class="showhide" style="display: none;"><span class="title">Menu</span><span class="icon1"></span><span class="icon2"></span></li>
-      <li style="display: inline-block;"><a class="color1" href="index">Inicio</a></li>
-      <li class="grid" style="display: inline-block;" *ngFor="let element of Categoria; index as i"><a class="color{{i+1}}" style="color: white;"  href="catalogo" (click)="categoria(element.codigoCategoria)">{{element.nombreCategoria}}</a></li>
-    </ul>
-    <div class="clear"></div>
-  </div>
-</div><br>
-<!-- FIN CATEGORIAS -->
-
 <h2 class="subtitulos">Te Recomendamos</h2>
 <div class="conte_img2 css-grid">
   <article class="entrada-blog" *ngFor="let element of Producto; index as i">

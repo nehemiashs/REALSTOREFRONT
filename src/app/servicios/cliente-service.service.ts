@@ -11,7 +11,7 @@ import { EntidadContacto } from '../modelos/entidad-contacto';
 })
 export class ClienteServiceService {
 
-  url:string="https://back-realstore.herokuapp.com";
+  url:string="http://localhost:1010";
   constructor(private http:HttpClient) {}
 
   ListarProductos(){

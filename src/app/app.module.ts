@@ -22,6 +22,9 @@ import { ProductosComponent } from './componentes/productos/productos.component'
 import { RegistroUsuarioComponent } from './componentes/registro-usuario/registro-usuario.component';
 import { UsuariosComponent } from './componentes/usuarios/usuarios.component';
 import { FilterPipe } from './pipes/filter.pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { PopoverModule } from 'ngx-bootstrap/popover';
 
 @NgModule({
   declarations: [
@@ -51,7 +54,10 @@ import { FilterPipe } from './pipes/filter.pipe';
     BrowserModule,
     AppRoutingModule,
     /* NgbModule */
-    ChartsModule
+    ChartsModule,
+    BrowserAnimationsModule,
+    NgxPaginationModule,
+    PopoverModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

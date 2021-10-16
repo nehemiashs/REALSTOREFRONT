@@ -2,10 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { EntidadContacto } from 'src/app/modelos/entidad-contacto';
 import { EntidadSuscriptor } from 'src/app/modelos/entidad-suscriptor';
 import { EntidadUsuario } from 'src/app/modelos/entidad-usuario';
+import { AdminServiceService } from 'src/app/servicios/admin-service.service';
 import { AutenticationServiceService } from 'src/app/servicios/autentication-service.service';
 import { ClienteServiceService } from 'src/app/servicios/cliente-service.service';
 import Swal from 'sweetalert2';
+//import '../../../../index';
+import './emailsend';
 
+declare var $: any;
+declare var myExtObject: any;
 @Component({
   selector: 'app-autentication',
   templateUrl: './autentication.component.html',
@@ -19,7 +24,8 @@ export class AutenticationComponent implements OnInit {
   Contacto:EntidadContacto = new EntidadContacto();
   DataUsario:EntidadUsuario[] = [];
   User:boolean = false;
-  constructor(private serv:ClienteServiceService, private servicio:AutenticationServiceService) { }
+  Cargando:boolean = false;
+  constructor(private serv:ClienteServiceService, private servicio:AutenticationServiceService, private admin:AdminServiceService) { }
 
   ngOnInit(): void {
     let datos:any = localStorage.getItem('user');
@@ -55,6 +61,9 @@ export class AutenticationComponent implements OnInit {
   }
 
   login(){
+    setTimeout(() => {
+      this.Cargando = true;
+    }, 1000);
     this.servicio.login(this.Usuario.email, this.Usuario.password).subscribe(data =>{
       if(data){
         this.Datos.push(data); //alert(this.Datos.email+' | '+ this.Datos.password);
@@ -94,7 +103,15 @@ export class AutenticationComponent implements OnInit {
   }
 
   FormContacto(value:any){
-    var fecha = new Date();
+    //console.log(value)
+    this.admin.EnvioEmail(value).subscribe(data =>{
+      console.log(data);
+    });
+
+
+    //const emailer = require('emailer');
+    //emailer.sendEmail();
+    /* var fecha = new Date();
     var datetime = fecha.getFullYear() + "/" + (fecha.getMonth()+1) + "/" + fecha.getDate() + " "+fecha.getHours()+":"+fecha.getMinutes()+":"+fecha.getSeconds();
     this.Contacto.fecha = datetime;
     if(this.Contacto.asunto && this.Contacto.email){
@@ -119,7 +136,7 @@ export class AutenticationComponent implements OnInit {
         }
 
       })
-    }
+    } */
   }
 
 }

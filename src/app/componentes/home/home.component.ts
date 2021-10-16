@@ -10,13 +10,15 @@ declare var $:any;
   styleUrls: ['./home.component.scss']
 })
 export class HOMEComponent implements OnInit {
-
+  html = `<span class="btn btn-danger">Never trust not sanitized HTML!!!</span>`;
   constructor(private servicio:ClienteServiceService) { }
 
   User:boolean = true;
   Producto: EntidadProducto[]=[];
+  Producto2: EntidadProducto[]=[];
   Categoria: EntidadCategorias[]=[];
   ngOnInit(): void {
+
     let user = localStorage.getItem('user');
     if(user)this.User = false;
 
@@ -34,6 +36,13 @@ export class HOMEComponent implements OnInit {
   categoria(e:any){
     //var codcat:any=e.target.parentElement.querySelector('a').getAttribute('id');
     localStorage.setItem('codcat',e);
+    this.servicio.ListarProductosCategoria(e).subscribe(data =>{
+      this.Producto2 = data;
+    })
+  }
+  detalle(e:any){
+    localStorage.setItem('codprod',e);
+    location.href = 'detalle';
   }
 
 }

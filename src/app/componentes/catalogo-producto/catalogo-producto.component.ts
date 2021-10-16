@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EntidadProducto } from 'src/app/modelos/entidad-producto';
 import { ClienteServiceService } from 'src/app/servicios/cliente-service.service';
 import Swal from 'sweetalert2';
+import { PageChangedEvent } from 'ngx-bootstrap/pagination';
 
 declare var $:any;
 @Component({
@@ -11,9 +12,8 @@ declare var $:any;
 })
 export class CatalogoProductoComponent implements OnInit {
 
-
   constructor(private servicio:ClienteServiceService) { }
-
+  p:number = 1;
   Producto: EntidadProducto[]=[];
   User:boolean = true;
   ngOnInit(): void {

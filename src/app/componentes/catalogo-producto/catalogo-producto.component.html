@@ -92,9 +92,13 @@
     </form>
   </aside>
   <!-- FIN CARRITO -->
-<div class="row" style="margin-top: 2rem;">
+
+<div class="row prod" style="margin-top: 2rem;">
+  <div class="text-end" style="margin-top: 2rem">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
   <!-- CARD DE PRODUCTOS -->
-  <div class="card producto" style="width: 13rem; margin: auto; margin-top: 1rem;" *ngFor="let variable of Producto; index as i">
+  <div class="card producto" style="width: 13rem; margin: auto; margin-top: 3rem;" *ngFor="let variable of Producto | paginate: { currentPage: p, itemsPerPage: 5 }; let i = index">
     <img src={{variable.image}} class="card-img-top" (click)="detalle(variable.codigo)" style="margin-top: 10px; max-height: 180px;" alt="{{variable.nombre}}">
     <div class="card-body" style=" height: 270px !important">
       <h6><b>{{variable.nombre}}</b></h6>
@@ -108,7 +112,6 @@
   <!-- FIN DEL CARD -->
 </div>
 </div><br>
-
 
 <!-- ======= Footer ======= -->
 <footer id="footer">

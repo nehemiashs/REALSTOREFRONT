@@ -16,7 +16,11 @@ import { EntidadVentas } from '../modelos/entidad-ventas';
 export class AdminServiceService {
 
   url:string="https://back-realstore.herokuapp.com";
+  urlemail:string="http://localhost:3000";
   constructor(private http:HttpClient) { }
+  EnvioEmail(entidad:any){ console.log(entidad)
+    return this.http.post<[]>(this.urlemail+"/envio",entidad);
+  }
 
   RegistrarVenta(entidad:EntidadVentas){
     return this.http.post<EntidadVentas[]>(this.url+"/registrarventas", entidad);

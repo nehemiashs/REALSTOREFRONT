@@ -151,11 +151,11 @@
           <aside>
             <h5 style="text-align: center;">Resumen de tu orden</h5><hr>
             <form>
-              <div class="table">
+              <div class="table"><tr>
                 <label>Sub-total Productos:&nbsp;&nbsp;&nbsp;</label><label id="subtotal"></label> <br>
                 <br>
                 <sub>El costo del despacho no esta incluido en el precio</sub><br>
-              </div><hr><h5 id="total" style="text-align: center;">$ 0.000.000</h5><br>
+              </tr></div><hr><h5 id="total" style="text-align: center;">$ 0.000.000</h5><br>
               <input id="total-pagar" hidden/>
               <button class="btn btn-success form-control disabled" id="Pagar-Ahora" style="height: 50px;" (click)="next()"><i class="fas fa-shield-alt"></i> PAGAR AHORA</button><br><br>
               <a href="catalogo"><i class="fas fa-undo-alt fa-3x" style="margin: auto;text-align: center; width: 100%; cursor: pointer;"></i></a><br>
@@ -171,12 +171,12 @@
           <aside>
             <h5 style="text-align: center;">Resumen de tu orden</h5><hr>
             <form>
-              <div class="table">
+              <div class="table"><tr>
                 <label>Sub-total Productos:&nbsp;&nbsp;&nbsp;</label><label id="subtotal2"></label> <br>
                 <label>IGV (18%):&nbsp;&nbsp;&nbsp;</label><label id="igv"></label> <br>
                 <br>
                 <sub>El costo del despacho no esta incluido en el precio</sub><br>
-              </div><hr><h5 id="total2" style="text-align: center;">$ 0.000.000</h5><br>
+              </tr></div><hr><h5 id="total2" style="text-align: center;">$ 0.000.000</h5><br>
               <a class="btn btn-info form-control" [hidden]="MostrarFactura"  id="pdf" style="height: 50px; margin-bottom: 1rem;"><i class="fas fa-shield-alt"></i> VER FACTURA</a>
               <button class="btn btn-success form-control" style="height: 50px;" ><i class="fas fa-shield-alt"></i> PAGA SEGURO</button><br><br>
               <i class="fas fa-undo-alt fa-3x" (click)="previous()" style="margin: auto;text-align: center; width: 100%; cursor: pointer;"></i><br>
